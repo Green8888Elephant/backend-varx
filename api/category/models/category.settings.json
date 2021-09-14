@@ -21,11 +21,11 @@
     },
     "filterOptions": {
       "type": "json",
-      "required": true
+      "required": false
     },
     "products": {
-      "collection": "product",
-      "via": "category"
+      "via": "category",
+      "collection": "product"
     }
   }
 }

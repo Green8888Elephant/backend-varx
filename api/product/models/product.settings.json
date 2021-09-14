@@ -12,7 +12,7 @@
     "name": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     },
     "description": {
       "type": "text",
@@ -23,12 +23,12 @@
       "type": "boolean"
     },
     "category": {
-      "via": "products",
-      "model": "category"
+      "model": "category",
+      "via": "products"
     },
     "variants": {
-      "via": "product",
-      "collection": "variant"
+      "collection": "variant",
+      "via": "product"
     }
   }
 }
