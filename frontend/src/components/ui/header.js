@@ -14,6 +14,7 @@ import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import { Link, navigate} from 'gatsby'
 
 import search from "../../images/search.svg";
 import cart from "../../images/cart.svg"
@@ -76,6 +77,31 @@ export default function Header({ categories}) {
     </SwipeableDrawer>
   )
 
+  const actions = [
+    {
+      icon: search,
+      alt: "serach",
+      visible: true,
+    },
+    {
+      icon: cart,
+      alt: "cart",
+      visible: true,
+    },
+    {
+      icon: accountHeader,
+      alt: "account",
+      visible: !matchesMD,
+    },
+    {
+      icon: menu,
+      alt: "menu",
+      visible: matchesMD,
+      onClick: () => setDrawerOpen(true)
+    },
+  ]
+
+
   return (
     <AppBar color="transparent" elevation={0}>
       <Toolbar>
@@ -83,26 +109,27 @@ export default function Header({ categories}) {
           <Typography variant="h1"><span className={classes.logoText}>VAR</span> X</Typography>
         </Button>
         {matchesMD ? drawer : tabs}
-        <IconButton>
-          <img
-            src={search}
-            alt="search"/>
-        </IconButton
-          >
-        <IconButton>
-          <img
-            className={classes.icon}
-            src={cart}
-            alt="cart"/>
-        </IconButton>
-        <IconButton
-        onClick={() => matchesMD ? setDrawerOpen(true) : null}>
-          <img
-            className={classes.icon}
-            src={matchesMD ? menu : accountHeader}
-            alt={matchesMD ? "menu" : "accountHeader"}
-          />
-        </IconButton>
+
+        {actions.map(action => (
+          <IconButton>
+            <img
+              className={classes.icon}
+              src={action.icon}
+              alt={action.alt}/>
+          </IconButton>
+        ))}
+
+        {matchesMD ? (
+            <IconButton
+              onClick={() => setDrawerOpen(true)}>
+              <img
+                className={classes.icon}
+                src={menu}
+                alt="menu"
+              />
+            </IconButton>
+          ) : null
+        }
       </Toolbar>
     </AppBar>
   )
