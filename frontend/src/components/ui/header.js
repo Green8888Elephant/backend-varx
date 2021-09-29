@@ -118,18 +118,6 @@ export default function Header({ categories}) {
               alt={action.alt}/>
           </IconButton>
         ))}
-
-        {matchesMD ? (
-            <IconButton
-              onClick={() => setDrawerOpen(true)}>
-              <img
-                className={classes.icon}
-                src={menu}
-                alt="menu"
-              />
-            </IconButton>
-          ) : null
-        }
       </Toolbar>
     </AppBar>
   )
